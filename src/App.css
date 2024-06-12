@@ -1,0 +1,262 @@
+** {
+  margin: 0px;
+  padding: 0px;
+}
+
+.webImg{
+  width: 80px;
+  border-radius: 50%;
+}
+
+.cartImg{
+  width: 30px;
+  margin-top: -8px;
+}
+
+.App{
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-bottom: 1px rgb(228, 228, 228) solid;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+}
+
+.ulDiv{
+  display: flex;
+  width: 30%;
+  margin-top: 15px;
+  padding-top: 10px;
+}
+
+.ulDiv:hover{
+  cursor: pointer;
+}
+
+ul{
+  margin: 0px;
+  padding-left: 20px;
+}
+
+.bodyPicturesDiv{
+  padding: 10px;
+ /* margin-left: 30px;
+  margin-top: 10px;*/
+  width:90%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mainImages{
+  width: 400px;
+  height: 400px;
+  border: 2px solid rgb(156, 154, 156);
+  margin: 0 10px;
+}
+
+.picsCategory{
+  margin-top: -70px;
+  margin-left: 40px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(66, 3, 121);
+}
+
+.linkTag{
+  text-decoration: none;
+}
+
+.mainImages:hover{
+  border: 2px solid black;
+}
+
+.productPagebtn{
+  border: none;
+  background-color: white;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.5rem;
+  margin-top: 40px;
+  cursor: pointer;
+}
+
+.productsBtnDiv{
+  display: flex;
+}
+
+.pageBtn{
+  border: 2px solid black;
+  border-radius: 3px;
+  margin-left:10px;
+  margin-right: 10px;
+  cursor: pointer;
+  background-color: rgb(183, 91, 91);
+  color: white;
+}
+
+.productPageBtnDiv{
+  margin-left: 80px;
+}
+
+.mainImgDiv{
+  padding: auto;
+ width: 30%;
+ text-align: center;
+}
+
+.ul:hover{
+  text-decoration: underline; 
+}
+
+.clothingImg{
+  width: 470px;
+}
+
+.productImg{
+  width: 100px;
+  height: 150px;
+  margin-left: 70px;
+}
+
+.productPageCardTitle{
+  color: rgb(100, 96, 96);
+  font-style: italic;
+}
+
+.productPageCardPrice{
+  font-weight: bold;
+  color: black;
+}
+
+.productCardTitle{
+  color: black;
+  width:45%;
+  margin: auto;
+}
+
+.productCardImg{
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  margin-left: 100px;
+  display: inline-block;
+}
+
+.specificCardDiv{
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  width: 70%;
+}
+
+.productCardDetailsDiv{
+  width: 40%;
+  margin-right: 60px;
+  padding: 20px;
+  border: 2px solid grey;
+  background-color: rgb(214, 208, 208);
+  padding-bottom: 60px;
+}
+
+.productCardDetailsDes{
+  font-size: 1.5rem;
+}
+
+.productDiv{
+  font-size: 1.2rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.productCardDiv{
+  padding: 15px;
+  border: 2px solid black;
+  width:250px ;
+  margin: 10px;
+  padding: 10px;
+  
+}
+
+.cartLength{
+  position: relative;
+  bottom: 20px;
+  right: 15px;
+  width: 15px;
+  background-color: aliceblue;
+  height: 15px;
+  padding: 3px;
+  border-radius: 5px;
+  background-color: rgb(201, 97, 33)
+}
+
+.productMainDiv{
+
+}
+
+h2{
+  margin: 0px;
+  padding: 20px;
+}
+
+.btn{
+  width: 50px;
+  height: 50px;
+  margin-top: 5px;
+  background-color: white;
+  font-size: 1.2rem;
+}
+
+.btn:hover{
+  background-color:rgb(214, 208, 208) ;
+  cursor: pointer;
+}
+
+.number{
+  width: 50px;
+  height: 33px;
+  background-color:rgb(214, 208, 208);
+  margin-top: 5px;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  text-align: center;
+  padding-top: 14px;
+  font-size: 1.2rem;
+}
+
+.addBtn{
+  width: 150px;
+  height: 50px;
+  margin: 0px 20px;
+  font-weight: bold;
+  font-size: 1rem;
+  background-color:rgb(214, 208, 208) ;
+}
+
+.buyBtn{
+  width: 150px;
+  height: 50px;
+  font-weight: bold;
+  font-size: 1rem;
+  color: white;
+  background-color: rgb(219, 69, 69);
+}
+
+.buyBtn:hover{
+  color: rgb(219, 69, 69);
+  background-color:rgb(214, 208, 208);
+  border: 2px solid rgb(219, 69, 69) ;
+  cursor: pointer;
+}
+
+.addBtn:hover{
+  color: white;
+  background-color:rgb(16, 16, 16);
+ 
+  cursor: pointer;
+}
+
+.horizontalLine{
+  padding-top: 20px;
+  border-bottom: 2px solid rgba(209, 203, 203, 0.897);
+  
+}
