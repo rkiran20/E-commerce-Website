@@ -3,7 +3,7 @@ import React from 'react'
 const ProductPageCard = ({data}) => {
     //console.log(data)
     var title = data.title;
-    var trimmedTitle = title.substring(0,22);
+    var trimmedTitle = title?.substring(0,22);
 
   return (
     <div>

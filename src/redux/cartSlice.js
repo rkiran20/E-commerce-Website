@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { checkObj, getIndex } from "../utils/functions";
+
 
 
 const cartSlice = createSlice({
@@ -8,8 +10,11 @@ const cartSlice = createSlice({
     },
     reducers:{
         addItems:(state,action)=>{
-            console.log(action.payload)
-            state.items.push(action.payload);
+            if(checkObj(state.items,action.payload)){
+                const index = getIndex(state.items,action.payload);
+                state.items[index] = {...state.items[index],totalNumber: state.items[index].totalNumber+1}
+            }
+            else state.items.push(action.payload);
         },
         removeItems:(state,action)=>{
             const newArray = state.items.filter((data)=>{

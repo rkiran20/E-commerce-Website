@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import Body from './components/Body';
 import Header from './components/Header';
 import { Outlet, createBrowserRouter } from 'react-router-dom';
-import Clothing from './components/Clothing';
 import ProductPage from './components/ProductPage';
 import Productcard from './components/Productcard';
 import CartPage from './components/CartPage';
 import { Provider } from 'react-redux';
 import appStore from './redux/appStore';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
       <div>
         <Header  />
         <Outlet  />
+        <Footer />
       </div>
     </Provider>
   );

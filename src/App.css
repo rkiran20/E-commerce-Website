@@ -1,4 +1,4 @@
-** {
+* {
   margin: 0px;
   padding: 0px;
 }
@@ -259,4 +259,99 @@ h2{
   padding-top: 20px;
   border-bottom: 2px solid rgba(209, 203, 203, 0.897);
   
+}
+
+.deleteCartBtn{
+  border: none;
+  background-color: rgb(196, 187, 187);
+  font-weight: bold;
+  margin-left: 30px;
+  padding-left: 30px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.deleteCartBtn:hover{
+  cursor: pointer;
+  text-decoration: solid 2px black;
+  color: rgb(241, 8, 8);
+  color: rgb(2, 69, 8);
+}
+
+.footerDiv{
+  display: flex;
+  width: 40%;
+  margin: auto;
+  padding-top: 40px;
+}
+
+.footerMainDiv{
+  background-color: black;
+  height: 150px;
+  width: 100%;
+}
+
+.footer{
+  width: 15%;
+  margin: auto;
+  font-weight: bold;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: white;
+  margin-top: 20px;
+}
+
+.footerDivUl{
+  font-weight: bold;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: white;
+}
+
+.cartHome{
+  width: fit-content;
+  height: 40px;
+  margin-left: 150px;
+  padding: 10px;
+  border: none;
+  background-color: white;
+  font-size: 1.5rem;
+}
+
+.cartHome:hover{
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
+  background-color: black;
+}
+
+.linkCart{
+  height: 50px;
+}
+
+.bodyClothingDiv{
+  display: flex;
+  width: 60%;
+  margin: auto;
+  padding: 0px;
+}
+
+.bodyClothingDivLeft{
+  background-color: rgba(209, 203, 203, 0.897);
+  width: 60%;
+  padding-bottom: 40px;
+}
+
+.bodyClothingBtn{
+  background-color: black;
+  color: white;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  width: 120px;
+  height: 50px;
+  margin-left: 30px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.bodyClothingBtn:hover{
+  cursor: pointer;
+  background-color:rgba(209, 203, 203, 0.897) ;
+  color: black;
 }
