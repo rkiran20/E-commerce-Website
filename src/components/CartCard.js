@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { removeItems } from '../redux/cartSlice';
+import { addItems, changeSelectedCartItems, changeTotalItems, deletedItem, isSelectedItem, notSelectedItem, removeItems, selectItem } from '../redux/cartSlice';
 
-const CartCard = ({data,setTotalNumber,totalNumber,totalCost,setTotalCost}) => {
+const CartCard = ({data,totalCost,setTotalCost}) => {
     const [number,setNumber] = useState(data.totalNumber);
     const [isSelected,setIsSelected] = useState(false)
     const dispatch = useDispatch();
@@ -11,25 +11,22 @@ const CartCard = ({data,setTotalNumber,totalNumber,totalCost,setTotalCost}) => {
     }
     const handleChange =(event)=>{
         setNumber(event.target.value)
-        setTotalNumber(totalNumber);
+        const newData = {...data, totalNumber: event.target.value}
+        dispatch(changeSelectedCartItems(newData))
+        dispatch(changeTotalItems(newData))
+        
+        //setTotalNumber(totalNumber);
     }
     const handleCheckBox =()=>{
-        setIsSelected(!isSelected);
-        if(isSelected === false) {
-            const num1 = Math.floor(totalNumber);
-            const num2 = Math.floor(number);
-            setTotalNumber(num1 + num2);
-            const cost1 = Math.floor(totalCost);
-            const cost2 = Math.floor(num2*data.price)
-            setTotalCost(cost1+cost2)
+        const value =!isSelected 
+        setIsSelected(value);
+        if(value === true) {
+            dispatch(selectItem(data.totalNumber))
+            dispatch(isSelectedItem(data))
         }
         else{
-            const num1 = Math.floor(totalNumber);
-            const num2 = Math.floor(number);
-            setTotalNumber(num1 - num2);
-            const cost1 = Math.floor(totalCost);
-            const cost2 = Math.floor(num2*data.price)
-            setTotalCost(cost1-cost2)
+            dispatch(deletedItem(data.totalNumber))
+            dispatch(notSelectedItem(data))
         }
     }
   return (

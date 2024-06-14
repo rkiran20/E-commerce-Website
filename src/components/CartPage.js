@@ -1,15 +1,22 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearCart, removeItems } from '../redux/cartSlice'
+import { clearCart } from '../redux/cartSlice'
 import CartCard from './CartCard'
 import { Link } from 'react-router-dom'
 
 const CartPage = () => {
-    const [totalNumber,setTotalNumber] = useState(0);
     const [isEmi,setIsEmi] = useState(false);
-    const [totalCost,setTotalCost] = useState(0);
     const cartData = useSelector((store)=> store.cart.items)
-    console.log(cartData)
+    const cartSelectedItems = useSelector((store)=>store.cart.totalSelectedNumber)
+    //console.log(cartData )
+    var totalItemsInTheCart=0;
+    var totalCostOfItemsInCart = 0;
+    for(let i=0;i<cartData.length;i++){
+        if(cartData[i].selected===true){
+            totalItemsInTheCart = totalItemsInTheCart+ Math.floor(cartData[i].totalNumber);
+            totalCostOfItemsInCart = totalCostOfItemsInCart + Math.floor(totalItemsInTheCart*cartData[i].price)
+        }
+    }
     const dispatch = useDispatch();
     const handleClearCart=()=>{
         dispatch(clearCart());
@@ -25,11 +32,11 @@ const CartPage = () => {
         <div style={{display:'flex', width:'100%'}}>
             <div style={{marginLeft:'30px', paddingLeft:'30px'}}>
                 {cartData.map((data,index)=>{
-                    return <CartCard key={index} data={data} setTotalNumber={setTotalNumber} totalNumber={totalNumber} totalCost={totalCost} setTotalCost={setTotalCost} />
+                    return <CartCard key={index} data={data}  />
                 })}
             </div>
             {cartData.length!==0 ? <div style={{width:'30%', textAlign:'left' , padding:'10px',backgroundColor:'rgb(196, 187, 187)', marginRight:'15px',marginTop:'10px', display:'inline-block',height:'fitContent'}}>
-                <div style={{ margin:'10px 0px'}}>SubTotal ({totalNumber} items) :  $ {totalCost}</div>
+                <div style={{ margin:'10px 0px'}}>SubTotal ({totalItemsInTheCart} items) :  $ {totalCostOfItemsInCart}</div>
                 <input type='checkbox'></input>
                 <label style={{fontSize:'1.1rem' }}>This order countains a gift</label>
                 <button style={{width:'150px',padding:'7px', backgroundColor:'rgb(2, 69, 8)',borderRadius:'10px',color:'white', margin:'10px 0px'}}>Proceed To Buy</button>
@@ -44,7 +51,7 @@ const CartPage = () => {
                 </div>
                 </div> : <div style={{height:'400px', display:'flex',justifyContent:'space-between'}}>
                     <p style={{fontSize:'2rem'}}> Your Cart is Empty Please shop</p>
-                    <Link to={"/"}  className='linkCart'>  <button className='cartHome'>Click here to Browse</button></Link>
+                    <Link to={"/"}  className=''>  <button className='cartHome'>Click here to Browse</button></Link>
                 </div>}
         </div> 
     </div>
