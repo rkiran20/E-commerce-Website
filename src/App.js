@@ -44,7 +44,15 @@ export const appRouter = createBrowserRouter([
         element: <ProductPage />
       },
       {
-        path:"/clothing/123",
+        path:"/clothing/:resId",
+        element: <Productcard />,
+      },
+      {
+        path:"/jewelery/:resId",
+        element: <Productcard />,
+      },
+      {
+        path:"/electronics/:resId",
         element: <Productcard />,
       },
       {

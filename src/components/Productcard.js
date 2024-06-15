@@ -1,15 +1,28 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import { addItems } from '../redux/cartSlice';
 
 const Productcard = () => {
     const [number,setNumber] = useState(1);
+    const [newData,setNewData] = useState([]);
     const location = useLocation();
-    const {data} = location.state;
+    const {resId} = useParams();
+    //console.log(location.pathname)
     const dispatch = useDispatch();
     //console.log(from)
-    //console.log(data)
+    //console.log(typeof(resId))
+    useEffect(()=>{
+        gettingData();
+    },[]);
+    //console.log(newData[resId-1])
+    const gettingData = async ()=>{
+        const responce = await fetch("https://fakestoreapi.com/products");
+        const jsonData = await responce.json();
+        setNewData(jsonData)
+    }
+    const newLength = Math.floor(location.pathname.length) - Math.floor(resId.length) 
+    const newPathName = location.pathname.substring(0,newLength-1)
     const handleDelete = ()=>{
         if(number === 1) return;
         setNumber(number-1);
@@ -21,11 +34,13 @@ const Productcard = () => {
     }
   return (
     <div className='productMainDiv'>
-        <h2 className='productCardTitle' >{data.title}</h2>
+        {newData.length>0 && <div>
+            <Link to={newPathName}><button className='productPagebtn'>←  Home</button></Link>
+        <h2 className='productCardTitle' >{newData[resId-1].title}</h2>
         <div className='specificCardDiv'>
-            <img src={data.image} className='productCardImg'></img>
+            <img src={newData[resId-1].image} className='productCardImg'></img>
             <div className='productCardDetailsDiv'>
-                <p className='productCardDetailsDes'>{data.description}</p>
+                <p className='productCardDetailsDes'>{newData[resId-1].description}</p>
                 <div style={{display:'flex'}} > 
                     <h3 style={{fontSize:'1.5rem'}}>Quantity</h3>
                     <div style={{display:'flex', margin:'10px 30px'}} >
@@ -33,10 +48,10 @@ const Productcard = () => {
                         <p className='number'>{number}</p>
                         <button onClick={handleDelete} className='btn'>-</button>
                     </div>
-                     { number>=1 ? <h1 >$ {data.price * number}</h1> : <h1>$ {data.price}</h1>}
+                     { number>=1 ? <h1 >$ {newData[resId-1].price * number}</h1> : <h1>$ {newData[resId-1].price}</h1>}
                 </div>
                 <div>
-                    <button onClick={()=>{handleAddCart(data)}} className='addBtn' > ADD TO CART</button>
+                    <button onClick={()=>{handleAddCart(newData[resId-1])}} className='addBtn' > ADD TO CART</button>
                     <button className='buyBtn'>BUY NOW</button>
                 </div>
             </div>
@@ -45,17 +60,18 @@ const Productcard = () => {
         <div style={{display:'flex', textAlign:'center', margin:'auto', width:'70%' }}>
             <div style={{width:'350px', padding:'10px', backgroundColor:'rgb(214, 208, 208)', borderRadius:'5px',margin:'15px'}}>
                 <h3 style={{}}>Category</h3>
-                <p style={{fontSize:'1.2rem'}}>{data.category}</p>
+                <p style={{fontSize:'1.2rem'}}>{newData[resId-1].category}</p>
             </div>
             <div style={{width:'350px', padding:'10px', backgroundColor:'rgb(214, 208, 208)', borderRadius:'5px',margin:'15px'}}>
                 <h3 style={{}}>Rating</h3>
-                <p style={{fontSize:'1.2rem'}}>{data.rating.rate}</p>
+                <p style={{fontSize:'1.2rem'}}>{newData[resId-1].rating.rate}</p>
             </div>
             <div style={{width:'350px', padding:'10px', backgroundColor:'rgb(214, 208, 208)', borderRadius:'5px',margin:'15px'}}>
                 <h3 style={{}}>Count</h3>
-                <p style={{fontSize:'1.2rem'}}>{data.rating.count}</p>
+                <p style={{fontSize:'1.2rem'}}>{newData[resId-1].rating.count}</p>
             </div>
         </div>
+        </div>  }
     </div>
   )
 }

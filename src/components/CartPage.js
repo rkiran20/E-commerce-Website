@@ -14,7 +14,7 @@ const CartPage = () => {
     for(let i=0;i<cartData.length;i++){
         if(cartData[i].selected===true){
             totalItemsInTheCart = totalItemsInTheCart+ Math.floor(cartData[i].totalNumber);
-            totalCostOfItemsInCart = totalCostOfItemsInCart + Math.floor(totalItemsInTheCart*cartData[i].price)
+            totalCostOfItemsInCart = Math.floor(totalCostOfItemsInCart) + Math.floor(totalItemsInTheCart*cartData[i].price)
         }
     }
     const dispatch = useDispatch();

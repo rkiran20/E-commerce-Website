@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import ProductPageCard from './ProductPageCard';
 
 const ProductPage = () => {
     const [data,setData] = useState(null);
     const [filteredData,setFilteredData] = useState(null);
     const location = useLocation();
-    //console.log(location.state)
-    const {from} = location.state;
+    //console.log(location)
+    const pathName = location.pathname;
+    const from = location.pathname.substring(1,location.pathname.length);
+    //console.log(pathName)
+    // const navigate = useNavigate();
+    // const params = useParams();
+    // console.log(params)
     const handleData= async()=>{
         const responce = await fetch("https://fakestoreapi.com/products");
         const jsonData = await responce.json();
@@ -49,7 +54,7 @@ const ProductPage = () => {
         <div className='productDiv'>
             {filteredData.map((data,index)=>{
                 return(
-                <Link state={{data , from:from}}  to="/clothing/123" key={index} className='linkTag' >   
+                <Link state={{data , from:from}}  to={`${pathName}/${data.id}`} key={index} className='linkTag' >   
                     <ProductPageCard data={data} />
                 </Link>
                 )
