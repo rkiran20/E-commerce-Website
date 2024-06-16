@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
 
 const ProductPageCard = ({data}) => {
     var title = data.title;
@@ -8,7 +7,7 @@ const ProductPageCard = ({data}) => {
   return (
       <div>
         <div className='productCardDiv'>
-            <img src={data.image} alt='image' className='productImg'></img>
+            <img src={data.image} alt='logo' className='productImg'></img>
             <p className='productPageCardTitle' >{trimmedTitle}...</p>
             <p className='productPageCardPrice'>$ {data.price}</p>
         </div>

@@ -78,6 +78,7 @@ ul{
   font-size: 1.5rem;
   margin-top: 40px;
   cursor: pointer;
+  margin-left: 20px;
 }
 
 .productsBtnDiv{
@@ -95,7 +96,8 @@ ul{
 }
 
 .productPageBtnDiv{
-  margin-left: 80px;
+  margin: auto;
+  width: 50%;
 }
 
 .mainImgDiv{
@@ -354,4 +356,12 @@ h2{
   cursor: pointer;
   background-color:rgba(209, 203, 203, 0.897) ;
   color: black;
+}
+
+.cartPageRightDiv{
+  width:'30%';
+  padding: 10px;
+  background-color:'rgb(196, 187, 187)';
+  margin:'15px';
+  height: fit-content;
 }

@@ -1,22 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import ProductPageCard from './ProductPageCard';
 
 const ProductPage = () => {
     const [data,setData] = useState(null);
     const [filteredData,setFilteredData] = useState(null);
     const location = useLocation();
-    //console.log(location)
     const pathName = location.pathname;
-    const from = location.pathname.substring(1,location.pathname.length);
-    //console.log(pathName)
-    // const navigate = useNavigate();
-    // const params = useParams();
-    // console.log(params)
+    const from = pathName.substring(1,pathName.length);
     const handleData= async()=>{
         const responce = await fetch("https://fakestoreapi.com/products");
         const jsonData = await responce.json();
-       // console.log(jsonData)
         const filteredData = jsonData.filter((data)=>{
             return(
                 data.category.includes(from)
@@ -24,17 +18,12 @@ const ProductPage = () => {
         })
         setData(filteredData)
         setFilteredData(filteredData)
-       // console.log(filteredData)
     }
     useEffect(()=>{
         handleData();
     },[]);
-    const filterMens=()=>{
-        const newArray = data.filter((data)=> data.category==="men's clothing")
-        setFilteredData(newArray)
-    }
-    const filterWomens =()=>{
-        const newArray = data.filter((data)=>data.category === "women's clothing")
+    const filterCategory = (category)=>{
+        const newArray = data.filter((data)=> data.category===category)
         setFilteredData(newArray)
     }
     const filterAll=()=>{
@@ -46,15 +35,15 @@ const ProductPage = () => {
         <div className='productsBtnDiv'>
             <Link to="/"><button className='productPagebtn'>←  Home</button></Link>
             {from ==="clothing" && <div className='productPageBtnDiv' >
-            <button className='productPagebtn pageBtn' onClick={filterMens}>Men's Clothing</button>
-            <button className='productPagebtn pageBtn' onClick={filterWomens}>Women's Clothing</button>
-            <button className='productPagebtn pageBtn' onClick={filterAll}>All</button>
+            <button className='productPagebtn pagebtn' onClick={()=>{filterCategory("men's clothing")}}>Men's Clothing</button>
+            <button className='productPagebtn pagebtn' onClick={()=>{filterCategory("women's clothing")}}>Women's Clothing</button>
+            <button className='productPagebtn pagebtn' onClick={filterAll}>All</button>
         </div>}
         </div>
         <div className='productDiv'>
             {filteredData.map((data,index)=>{
                 return(
-                <Link state={{data , from:from}}  to={`${pathName}/${data.id}`} key={index} className='linkTag' >   
+                <Link  to={`${pathName}/${data.id}`} key={index} className='linkTag' >   
                     <ProductPageCard data={data} />
                 </Link>
                 )

@@ -4,18 +4,15 @@ import { Link, useLocation, useParams } from 'react-router-dom'
 import { addItems } from '../redux/cartSlice';
 
 const Productcard = () => {
-    const [number,setNumber] = useState(1);
     const [newData,setNewData] = useState([]);
+    const [number,setNumber] = useState(1);
     const location = useLocation();
+    console.log(location)
     const {resId} = useParams();
-    //console.log(location.pathname)
     const dispatch = useDispatch();
-    //console.log(from)
-    //console.log(typeof(resId))
     useEffect(()=>{
         gettingData();
     },[]);
-    //console.log(newData[resId-1])
     const gettingData = async ()=>{
         const responce = await fetch("https://fakestoreapi.com/products");
         const jsonData = await responce.json();
@@ -29,16 +26,16 @@ const Productcard = () => {
     }
     const handleAddCart = (data)=>{
         const obj = {...data,totalNumber : number}
-        //console.log(obj)
         dispatch(addItems(obj))
     }
   return (
     <div className='productMainDiv'>
         {newData.length>0 && <div>
-            <Link to={newPathName}><button className='productPagebtn'>←  Home</button></Link>
+            <Link to={newPathName}><button className='productPagebtn'>←  Back</button></Link>
+            <Link to="/"><button className='productPagebtn' style={{paddingLeft:'50px'}}>Home</button></Link>
         <h2 className='productCardTitle' >{newData[resId-1].title}</h2>
         <div className='specificCardDiv'>
-            <img src={newData[resId-1].image} className='productCardImg'></img>
+            <img src={newData[resId-1].image} alt='logo' className='productCardImg'></img>
             <div className='productCardDetailsDiv'>
                 <p className='productCardDetailsDes'>{newData[resId-1].description}</p>
                 <div style={{display:'flex'}} > 

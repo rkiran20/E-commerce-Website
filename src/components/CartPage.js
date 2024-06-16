@@ -35,7 +35,7 @@ const CartPage = () => {
                     return <CartCard key={index} data={data}  />
                 })}
             </div>
-            {cartData.length!==0 ? <div style={{width:'30%', textAlign:'left' , padding:'10px',backgroundColor:'rgb(196, 187, 187)', marginRight:'15px',marginTop:'10px', display:'inline-block',height:'fitContent'}}>
+            {cartData.length!==0 ? <div className='cartPageRightDiv' style={{width:'30%', textAlign:'left'  , padding:'10px',backgroundColor:'rgb(196, 187, 187)', marginRight:'15px',marginTop:'10px', display:'inline-block',height:'fitContent'}}>
                 <div style={{ margin:'10px 0px'}}>SubTotal ({totalItemsInTheCart} items) :  $ {totalCostOfItemsInCart}</div>
                 <input type='checkbox'></input>
                 <label style={{fontSize:'1.1rem' }}>This order countains a gift</label>
