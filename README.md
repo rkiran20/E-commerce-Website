@@ -4,5 +4,10 @@
     - used Link tag to do this and react-router-dom for routing
     - added different features in the product card like Add-to-cart,selecting items..etc
     - created a cart page 
-        - for this i used Redux to decrease the state variables 
+        - for this i used Redux to decrease the state variables
+        - created consigureStore from redux for creating a store for different slices in the redux
+        - imported Provider from react-redux and gave the store in the provider
+        - created a slice using createSlice for cart
+        - then addded this slice into the store and used useSelector for subscribing the store so that we can get the data
+        - then dispatched the action with useDispatch hook
         - implemented Clear-cart, Delete-cart, selecting items for the final buying the product...etc
